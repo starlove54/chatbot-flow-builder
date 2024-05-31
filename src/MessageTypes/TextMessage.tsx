@@ -17,6 +17,8 @@ const TextMessage = ({
   const outgoingEdges = edges.filter((edge) => edge.source === id)
 
   const canCreateEdge = outgoingEdges.length === 0
+  const isValidConnection = () => canCreateEdge
+
   return (
     <>
       <div className={`flex flex-col w-[300px]  shadow-xl rounded-b-lg `}>
@@ -35,7 +37,7 @@ const TextMessage = ({
         <Handle
           type="source"
           position={Position.Right}
-          isValidConnection={(connection) => canCreateEdge}
+          isValidConnection={isValidConnection}
         />
         <Handle type="target" position={Position.Left} />
       </div>
