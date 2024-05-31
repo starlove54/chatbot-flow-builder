@@ -1,22 +1,11 @@
 import { ArrowLeft } from 'lucide-react'
 import { Textarea } from './ui/textarea'
+import { Node } from 'reactflow'
 
 type SettingsPanelProps = {
-  node:
-    | {
-        id: string
-        data: { textMessage: string }
-        position: { x: number; y: number }
-        type: string
-      }
-    | undefined
+  node: Node | undefined
   setShowNodesPanel: (showNodesPanel: boolean) => void
-  updateNode: (updatedNode: {
-    id: string
-    data: { textMessage: string }
-    position: { x: number; y: number }
-    type: string
-  }) => void
+  updateNode: (updatedNode: Node) => void
 }
 
 const SettingsPanel = ({

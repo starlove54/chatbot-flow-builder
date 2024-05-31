@@ -9,6 +9,7 @@ import ReactFlow, {
   useNodesState,
   Panel,
   useReactFlow,
+  Node,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
 import { initialEdges, initialNodes } from './Utilities/Constants'
@@ -76,15 +77,7 @@ function App() {
   }, [])
 
   const handleNodeClick = useCallback(
-    (
-      event: React.MouseEvent,
-      node: {
-        id: string
-        data: { textMessage: string }
-        position: { x: number; y: number }
-        type: string
-      }
-    ) => {
+    (_event: React.MouseEvent, node: Node) => {
       setShowNodesPanel(false)
       setSelectedNodeId(node.id)
     },
@@ -128,12 +121,7 @@ function App() {
   }, [])
 
   const updateNode = useCallback(
-    (updatedNode: {
-      id: string
-      data: { textMessage: string }
-      position: { x: number; y: number }
-      type: string
-    }) => {
+    (updatedNode: Node) => {
       setNodes((prevNodes) => {
         const updatedNodes = prevNodes.map((node) => {
           if (node.id === updatedNode.id) {
